@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: cloud-admin
+  template:
+    metadata:
+      labels:
+        app: cloud-admin
+    spec:
+      containers:
+        - name: cloud-admin
+          image: registry.digitalocean.com/cloud-aat/admin:1.0.0
+          ports:
+          - containerPort: 3000
